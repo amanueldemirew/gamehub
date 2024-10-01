@@ -2,7 +2,8 @@ import useData from "./useData";
 
 export interface Genra {
   id: number;
-  name: string;
+    name: string;
+    image_background: string;
 }
 
 
