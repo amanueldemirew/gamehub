@@ -10,14 +10,14 @@ import useGenras, { Genra } from "../hooks/useGenras";
 import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
-    onSelectedGenra: (genra: Genra) => void;
-    selectedGenre: Genra | null;
+  onSelectedGenra: (genra: Genra) => void;
+  selectedGenre: Genra | null;
 }
 
-const GenraList = ({selectedGenre ,onSelectedGenra}: Props ) => {
+const GenraList = ({ selectedGenre, onSelectedGenra }: Props) => {
   const { data, isloading, error } = useGenras();
   if (isloading) return <Spinner />;
-  if (!error) return null;
+  if (error) return null;
   return (
     <List>
       {data.map((genra) => (
@@ -28,7 +28,8 @@ const GenraList = ({selectedGenre ,onSelectedGenra}: Props ) => {
               boxSize="32px"
               borderRadius={8}
             />
-            <Button fontWeight={genra.id === selectedGenre?.id ? "bold" : "normal"} 
+            <Button
+              fontWeight={genra.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => onSelectedGenra(genra)}
               fontSize={"lg"}
               variant="link"

@@ -1,4 +1,3 @@
-import { param } from "framer-motion/client";
 import useData from "./useData";
 
 export interface Genra {
