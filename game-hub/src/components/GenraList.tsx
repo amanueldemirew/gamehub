@@ -1,11 +1,10 @@
-import React from "react";
 import useGenras from "../hooks/useGenras";
 
 const GenraList = () => {
-  const { genras } = useGenras();
+  const { data } = useGenras();
   return (
     <ul>
-      {genras.map((genra) => (
+      {data.map((genra) => (
         <li key={genra.id}>{genra.name}</li>
       ))}
     </ul>

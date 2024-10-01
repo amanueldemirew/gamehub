@@ -11,6 +11,8 @@ const NavBar = () => {
           objectFit="fill"
           borderRadius="10"
           overflow="hidden"
+          height="10"
+          transform="scale(1)"
         />
         <ColorModeSwitch />
       </HStack>
