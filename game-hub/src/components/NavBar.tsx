@@ -13,9 +13,9 @@ const NavBar = ({onSearch}:Props) => {
         <Image
           src={logo}
           boxSize="20"
-          objectFit="fill"
           borderRadius="10"
           overflow="hidden"
+          objectFit={"cover"}
         />
         <SearchInput onSearch={onSearch} />
         <ColorModeSwitch />
