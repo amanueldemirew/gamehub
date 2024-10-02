@@ -18,7 +18,6 @@ export interface GameQuery {
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  
   return (
     <Grid
       
