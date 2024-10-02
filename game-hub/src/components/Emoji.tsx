@@ -1,4 +1,4 @@
-import { ImageProps, Image } from "@chakra-ui/react";
+import { ImageProps, Image, Box } from "@chakra-ui/react";
 import bullsEye from "../assets/bullseye.svg";
 import meh from "../assets/neutral-face.svg";
 import thumbup from "../assets/thumbs-up.svg";
@@ -14,7 +14,11 @@ const Emoji = ({ rating }: Props) => {
     5: { src: thumbup, alt: "Exceptional", boxSize: "25px" },
   };
 
-  return <Image {...emojiMap[rating]} mariginTop={1} />;
+  return (
+    <Box paddingY={1}>
+      <Image {...emojiMap[rating]} />
+    </Box>
+  );
 };
 
 export default Emoji;
