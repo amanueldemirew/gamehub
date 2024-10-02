@@ -41,6 +41,7 @@ const GenraList = ({ selectedGenre, onSelectedGenra }: Props) => {
                 onClick={() => onSelectedGenra(genra)}
                 fontSize={"lg"}
                 variant="link"
+                _hover={{ textDecoration: "none" }}
               >
                 {genra.name}
               </Button>
