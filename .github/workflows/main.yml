@@ -38,6 +38,12 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Change directory to game-hub
+        run: cd game-hub
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
