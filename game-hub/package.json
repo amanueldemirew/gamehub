@@ -2,7 +2,7 @@
   "name": "game-hub",
   "private": true,
   "version": "0.0.0",
-  "homepage": "gamehub/game-hub",
+  "homepage": "/gamehub/",
   "type": "module",
   "scripts": {
     "dev": "vite",
