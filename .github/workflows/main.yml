@@ -19,20 +19,19 @@ jobs:
         with:
           node-version: 18
 
-      - name: Navigate to project directory
-        run: cd game-hub  # Navigate to the correct folder
-
       - name: Install dependencies
-        run: npm install  # Install dependencies from the correct directory
+        run: npm install
+        working-directory: ./game-hub  # Set the correct working directory
 
       - name: Build project
         run: npm run build
+        working-directory: ./game-hub  # Set the correct working directory
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./game-hub/dist  # Adjust path for the correct directory
 
   deploy:
     name: Deploy
@@ -44,17 +43,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Change directory to game-hub
-        run: cd game-hub
-
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./game-hub/dist  # Adjust path for the correct directory
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./game-hub/dist  # Adjust path for the correct directory
