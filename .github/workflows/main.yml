@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,7 +17,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -27,28 +27,37 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./game-hub
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          working-directory: ./game-hub
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: 'npm'
+        working-directory: ./game-hub
+      - name: Clear npm cache
+        run: npm cache clean --force
+        working-directory: ./game-hub
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci || npm ci
+        working-directory: ./game-hub
       - name: Build
         run: npm run build
+        working-directory: ./game-hub
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        working-directory: ./game-hub
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
-          path: "./dist"
+          path: './dist'
+        working-directory: ./game-hub
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        working-directory: ./game-hub
